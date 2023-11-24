@@ -1,29 +1,25 @@
 import BannerSection from '@/components/BannerSection/BannerSection';
 import ListView from '@/components/Cards/Card';
-import Menu from '@/components/Header/Menu';
-import { MENU_QUERY } from '@/components/Header/MenuQuery';
 import { fetchData } from '@/helpers/graphql';
-import { DocumentNode, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 import React from 'react'
-import client from '../helpers/apollo/client';
 
-const Home = async () => {
+const Category = async ({ params }: { params: { category: string } }) => {
 
   // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // const toggleMobileMenu = () => {
   //   setMobileMenuOpen(!mobileMenuOpen);
   // }
-
-  const getPostsQuery = gql`
-  query GetPosts {
-    posts {
+  // console.log(params.category)
+  const getCategoryPosts = gql`
+  query GetCatergoryPosts ($slug: String) {
+    posts(where: {categoryName: $slug}) {
       edges {
         node {
           slug
           title
           databaseId
-          date
           featuredImage {
             node {
               sourceUrl
@@ -38,6 +34,7 @@ const Home = async () => {
               }
             }
           }
+          date
         }
       }
     }
@@ -45,12 +42,13 @@ const Home = async () => {
 `
   
   // Call the async function
- const data= await fetchData(getPostsQuery);
-  
+ const data= await fetchData(getCategoryPosts,params.category);
+
+
 
   return (
-
-      <div className="w-full md:w-1/2 lg:w-6/12 p-4">
+   
+   <div className="w-full md:w-1/2 lg:w-6/12 p-4">
         <div>
       {data &&
         data.posts?.edges.map((post: any, index: number) => {
@@ -61,8 +59,7 @@ const Home = async () => {
         })}
       </div>
       </div>
-
   )
 }
 
-export default Home
+export default Category
