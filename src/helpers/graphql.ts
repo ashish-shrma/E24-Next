@@ -1,7 +1,7 @@
 import { DocumentNode } from "graphql";
 import client from "./apollo/client";
 
-export const fetchData = async (query: DocumentNode,slug:string) => {
+export const fetchData = async (query: DocumentNode,slug?:string) => {
     try {
       const params = slug? {
         query: query,

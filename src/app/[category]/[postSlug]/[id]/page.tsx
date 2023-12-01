@@ -31,8 +31,8 @@ const Article = async ({ params }: { params: { id: string } }) => {
 //   console.log("textingxf" + tags.nodes[1].name);
 
   return (
-    <div className="w-full md:w-1/2 lg:w-6/12 p-4">
-      <div className="mx-4 md:mx-0 md:w-full mt-4 md:mt-4 w-auto bg-white overflow-hidden">
+    <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
+      <div className="mx-4 md:mx-0 md:w-full mt-4 md:mt-4 w-auto overflow-hidden">
         <div className="flex mb-2 w-full overflow-x-scroll whitespace-nowrap">
           <span className="px-2">
             <a
@@ -70,10 +70,10 @@ const Article = async ({ params }: { params: { id: string } }) => {
               <ShareIcon id={"databaseId"} slug={"slug"} title={"title"} />
             </div>
           </div>
-          <div className="md:flex-shrink-0 imgFill relative h-96">
+          <div className="md:flex-shrink-0 imgFill relative h-48 md:h-80">
             <Image
               layout="fill"
-              className="h-full w-full rounded-md object-cover md:h-full md:w-full"
+              className="h-full w-full rounded-md object-contain md:h-full md:w-full"
               src={
                 featuredImage?.node?.sourceUrl
                   ? featuredImage?.node?.sourceUrl

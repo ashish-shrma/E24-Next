@@ -30,7 +30,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({ featuredImage,categories,
     return (
             <>
             
-            <div className="mx-4 md:mt-2 md:mx-0 bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="mx-4 md:mt-2 md:mx-0 overflow-hidden border-b-2">
                 <div className=''>
                     <div className="md:flex-shrink-0 relative xl:h-72">
                         
@@ -51,10 +51,10 @@ const BannerSection: React.FC<BannerSectionProps> = ({ featuredImage,categories,
                         </div>
                         <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
                         
-                                <h3 className="pr-4 pt-2 md:font-medium text-lg md:text-2xl md:leading-8 leading-6">
+                                <h3 className="pr-4 pt-2 md:font-medium text-lg md:text-1xl md:leading-8 leading-6">
                                     {title ?
                                         <>
-                                            <span style={{ color: "#f30000" }}>
+                                            <span>
                                                 {title}:
                                             </span>
                                             {title}

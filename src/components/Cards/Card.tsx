@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BannerSection from '../BannerSection/BannerSection';
+import {getTimeElapsed} from "../../helpers/queries/getFormattedDate";
 
 type ListViewProps ={
 
@@ -33,35 +34,36 @@ const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, sl
   return (
     <>
           
-    <div className="my-4 mx-4 md:mx-0 bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="my-4 mx-4 md:mx-0 overflow-hidden border-b-2">
       <div className="flex justify-between">
-        <div className="md:flex-shrink-0 flex relative xl:w-64 w-60">
+        
+        <div className="xl:p-4 p-2 w-full">
+          
+          <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
+           
+              <h3 className="xl:w-full xl:text-base xl:leading-8 catTextLimit">
+                {title}
+              </h3>
+       
+          </Link>
+
+          <div className="tracking-wide xl:text-sm text-xs font-semibold py-2 flex" style={{ color: "#18479e" }}>
+            <Link href={`/${categories?.edges[0]?.node.slug}`}>
+                 <span>{categories?.edges[0]?.node.name}</span> 
+            </Link>
+            <span className='mx-3'>|</span>
+            <span>{getTimeElapsed(date)}</span>
+          </div>
+        </div>
+        <div className="md:flex-shrink-0 flex relative w-40 h-24">
           <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
               <Image 
                 layout="fill"
-                className="object-cover lg:p-4 rounded-md"
+                className="w-full h-40 md:h-auto object-contain rounded-t-md md:rounded-l-md mt-4"
                 src={featuredImage?.node?.sourceUrl || '/education/logo.png'}
                 alt={featuredImage?.node?.title}
               />
            
-          </Link>
-        </div>
-        <div className="xl:p-4 p-2 w-full">
-          <div className="flex justify-between">
-            <Link href={`/${categories?.edges[0]?.node.slug}`}>
-              
-                <div className="tracking-wide xl:text-sm text-xs font-semibold py-2" style={{ color: "#18479e" }}>
-                  {/* {categories?.nodes[0]?.name} | <span style={{ color: "#44c542" }}>{getTimeElapsed(date)}</span> */}
-                </div>
-          
-            </Link>
-          </div>
-          <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
-           
-              <h3 className="xl:w-full xl:text-xl xl:leading-9 catTextLimit">
-                {title}
-              </h3>
-       
           </Link>
         </div>
       </div>
