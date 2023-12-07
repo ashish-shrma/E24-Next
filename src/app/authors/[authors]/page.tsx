@@ -1,3 +1,4 @@
+import AuthorSection from "@/components/AuthorCard/AuthorSection";
 import BannerSection from "@/components/BannerSection/BannerSection";
 import ListView from "@/components/Cards/Card";
 import CenterCards from "@/components/CenterCards/CenterCards";
@@ -13,7 +14,7 @@ const Authors = async ({ params }: { params: { authors: string } }) => {
   // }
 
   const getAuthorPosts = gql`
-    query GetAuthorPosts($slug: String) {
+    query GetAuthorPosts($slug: String, $userId: ID!) {
       posts(where: { authorName: $slug }) {
         edges {
           node {
@@ -38,7 +39,7 @@ const Authors = async ({ params }: { params: { authors: string } }) => {
           }
         }
       }
-      user(idType: SLUG, id: $slug) {
+      user(idType: SLUG, id: $userId) {
         firstName
         avatar {
           url
@@ -61,12 +62,13 @@ const Authors = async ({ params }: { params: { authors: string } }) => {
 
   // Call the async function
   const data = await fetchData(getAuthorPosts, params.authors);
-  
 
-  //  console.log(data.tags);
+
+  //  console.log("authorDataNew", authorData);
 
   return (
     <>
+      <AuthorSection authorData={data.user} />
       <CenterCards data={data} />
     </>
   );

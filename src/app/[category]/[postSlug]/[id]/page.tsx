@@ -10,6 +10,7 @@ import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.sha
 import postcss from "postcss";
 import parse, { domToReact } from "html-react-parser";
 import ShareIcon from "@/components/SocialShare/ShareIcon";
+import { format } from "date-fns";
 
 const Article = async ({ params }: { params: { id: string } }) => {
   const data = await fetchData(getPost, params.id);
@@ -28,7 +29,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
 
   let contentParse = parse(content);
 
-//   console.log("textingxf" + tags.nodes[1].name);
+  const formattedModifiedDate = modified && format(new Date(modified), 'yyyy-MM-dd HH:mm');
 
   return (
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
@@ -62,7 +63,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
                       <Link href={`/authors/${author.node.slug}`}>{author.node.name}</Link>
                     </span>
                     <span className="block whitespace-nowrap leading-4 text-xs mt-2">
-                      {modified}
+                      {formattedModifiedDate}
                     </span>
                   </span>
                 </div>

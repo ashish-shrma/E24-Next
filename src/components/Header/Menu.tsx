@@ -4,6 +4,8 @@ import { useState } from "react";
 import Logo from "../../assets/Logo.webp";
 import Img from 'next/image';
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Menu = ({ menus }: { menus: any }) => {
 
@@ -14,17 +16,22 @@ const Menu = ({ menus }: { menus: any }) => {
   };
 
 
+  const pathname = usePathname();
+
   return (
     <>
 
 <header className="bg-fuchsia-800">
       <nav className="flex justify-between items-center w-[92%] mx-auto">
         <div>
+          <Link href="/">
+          
           <Img
             className="w-16 cursor-pointer"
             src={Logo}
             alt="..."
           />
+          </Link>
         </div>
         <div
           className={`nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 ${
@@ -42,7 +49,11 @@ const Menu = ({ menus }: { menus: any }) => {
                       <li className="menu">
                         <Link
                           key={id}
-                          className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 text-white"
+                          className={`lg:p-4 py-3 px-0 block border-b-2 border-transparent text-white ${
+                            pathname+"/" === path
+                              ? 'active border-b-2 border-red-500'
+                              : ''
+                          }`}
                           href={uri}
                         >
                           {label}
@@ -76,7 +87,7 @@ const Menu = ({ menus }: { menus: any }) => {
 
           <label
             onClick={toggleMenu}
-            name={isMenuOpen ? "close" : "menu"}
+            // name={isMenuOpen ? "close" : "menu"}
             className="pointer-cursor lg:hidden block"
           >
             <svg

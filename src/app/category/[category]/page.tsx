@@ -48,7 +48,11 @@ const Category = async ({ params }: { params: { category: string } }) => {
 
 
   return (
+
+    <>
+    
     <CenterCards data={data} />
+    </>
 
   )
 }

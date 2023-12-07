@@ -29,7 +29,8 @@ type ListViewProps ={
 const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, slug, databaseId, date  }) => {
 
 
-//   const composedTitle = composeTitle(title);
+// console.log("jhsadvbjwehqvdjhe",categories.edges);
+
 
   return (
     <>
@@ -48,7 +49,7 @@ const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, sl
           </Link>
 
           <div className="tracking-wide xl:text-sm text-xs font-semibold py-2 flex" style={{ color: "#18479e" }}>
-            <Link href={`/${categories?.edges[0]?.node.slug}`}>
+            <Link href={`/category/${categories?.edges[0]?.node.slug}`}>
                  <span>{categories?.edges[0]?.node.name}</span> 
             </Link>
             <span className='mx-3'>|</span>

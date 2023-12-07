@@ -7,6 +7,7 @@ export const fetchData = async (query: DocumentNode,slug?:string) => {
         query: query,
         variables: {
           slug: slug,
+          userId: slug
         }
       } :  {
         query: query,
