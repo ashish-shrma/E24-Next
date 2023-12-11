@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { fetchData } from "@/helpers/graphql";
 import { MENU_QUERY } from "@/components/Header/MenuQuery";
 import Menu from "@/components/Header/Menu";
+import Schema from "@/components/Seo/Schema";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Menu menus={menus} />
-
+        {/* <Schema /> */}
         <div className="lg:px-28 px-6 bg-gray-200 flex flex-wrap items-center lg:py-0 py-2">
           <div className="w-full flex flex-wrap">
             <div className="w-full md:w-1/2 lg:w-3/12 p-4">

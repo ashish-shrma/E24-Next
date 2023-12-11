@@ -6,17 +6,17 @@ import React from "react";
 import { getPost } from "@/helpers/queries/getPost";
 import Image from "next/image";
 import Link from "next/link";
-import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import postcss from "postcss";
 import parse, { domToReact } from "html-react-parser";
 import ShareIcon from "@/components/SocialShare/ShareIcon";
 import { format } from "date-fns";
+import Schema from "@/components/Seo/Schema";
 
 const Article = async ({ params }: { params: { id: string } }) => {
   const data = await fetchData(getPost, params.id);
   const {
     title,
     slug,
+    uri,
     databaseId,
     date,
     content,
@@ -24,14 +24,40 @@ const Article = async ({ params }: { params: { id: string } }) => {
     categories,
     modified,
     author,
+    excerpt,
     tags,
+    seo,
   } = data.post;
 
   let contentParse = parse(content);
 
+
   const formattedModifiedDate = modified && format(new Date(modified), 'yyyy-MM-dd HH:mm');
 
+  const { sourceUrl, caption, description } =  featuredImage.node;
+
+  // console.log('jhfehwfbejwhfjbs',author);
+  
+  
+
   return (
+
+    <>
+    <Schema data={{
+        name: author,
+        uri: uri,
+        headline: title,
+        description: excerpt,
+        datePublished: date,
+        dateModified: modified,
+        author: author,
+        categories: categories,
+        imgSourceUrl: sourceUrl,
+        imgCaption: caption,
+        imgDescription: description,
+        authorUrl : author,
+      }}/>
+
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
       <div className="mx-4 md:mx-0 md:w-full mt-4 md:mt-4 w-auto overflow-hidden">
         <div className="flex mb-2 w-full overflow-x-scroll whitespace-nowrap">
@@ -134,7 +160,9 @@ const Article = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
+
 
 export default Article;
