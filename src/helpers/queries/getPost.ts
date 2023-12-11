@@ -9,6 +9,8 @@ export const getPost = gql`query GetPost($slug: ID!) {
       id
       content
       modified
+      date
+      excerpt
       author {
         node {
           name
@@ -38,7 +40,15 @@ export const getPost = gql`query GetPost($slug: ID!) {
         node {
           title
           sourceUrl
+          caption
+          description
         }
+      }
+      seo {
+        metaKeywords
+        metaDesc
+        readingTime
+        opengraphPublishedTime
       }
     }
     

@@ -11,7 +11,10 @@
   "dependencies": {
     "@apollo/client": "^3.8.5",
     "graphql": "^16.8.1",
+    "he": "^1.2.0",
     "html-react-parser": "^4.2.9",
+    "isomorphic-dompurify": "^1.11.0",
+    "jsdom": "^23.0.1",
     "next": "13.5.4",
     "next-share": "^0.27.0",
     "react": "^18",
@@ -19,6 +22,7 @@
     "schema-dts": "^1.1.2"
   },
   "devDependencies": {
+    "@types/he": "^1.2.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
