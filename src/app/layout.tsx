@@ -24,7 +24,8 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Menu menus={menus} />
         {/* <Schema /> */}
-        <div className="lg:px-28 px-6 bg-gray-200 flex flex-wrap items-center lg:py-0 py-2">
+        <div className="lg:px-28 px-6 bg-gray-200 flex flex-wrap items
+        -center lg:py-0 py-2">
           <div className="w-full flex flex-wrap">
             <div className="w-full md:w-1/2 lg:w-3/12 p-4">
               <div className="md:col-span-12 left-panel hidden sm:block bg-white sticky top-10 h-screen">
