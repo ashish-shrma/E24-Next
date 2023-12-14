@@ -3,7 +3,7 @@ import ListView from "@/components/Cards/Card";
 import { fetchData } from "@/helpers/graphql";
 import { gql } from "@apollo/client";
 import React from "react";
-import { getPost } from "@/helpers/queries/getPost";
+import { getPost } from "@/queries/getPost";
 import Image from "next/image";
 import Link from "next/link";
 import parse, { domToReact } from "html-react-parser";

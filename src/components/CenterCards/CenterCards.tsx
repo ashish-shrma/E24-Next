@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import BannerSection from "@/components/BannerSection/BannerSection";
 import ListView from "@/components/Cards/Card";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ type InitialData = {
     pageInfo: {
       endCursor: string;
       hasNextPage: boolean;
-    }
+    };
   };
 };
 
@@ -34,36 +34,42 @@ const CenterCards = ({ data, query }: CenterCardsProps) => {
   const [posts, setPosts] = useState(data.posts.edges);
   const [cursor, setCursor] = useState(data.posts.pageInfo.endCursor);
   const loadMore = async () => {
-      console.log('Fetching more posts', cursor);
-        const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+    console.log("Fetching more posts", cursor);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: query,
+          variables: {
+            cursor: cursor,
           },
-          body: JSON.stringify({
-            query: query,
-            variables: {
-              after: cursor,
-            },
-          }),
-        });
-        const newData = await response.json();
-      setPosts([...posts, ...newData.data.posts.edges]);
-      setCursor(newData.data.posts.pageInfo.endCursor);
-
+        }),
+      }
+    );
+    const newData = await response.json();
+    console.log(newData.data.posts.edges[0].node.title);
+    setPosts([...posts, ...newData.data.posts.edges]);
+    setCursor(newData.data.posts.pageInfo.endCursor);
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+      if (
+        window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight
+      )
+        return;
       loadMore();
-      console.log('Fetch more list items!')
+      console.log("Fetch more list items!");
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [posts, cursor]);
 
-  
   return (
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
       <div>

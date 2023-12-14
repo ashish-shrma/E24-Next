@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import Image from 'next/image';
-import {getTimeElapsed} from "../../helpers/queries/getFormattedDate";
+import {getTimeElapsed} from "../../helpers/getFormattedDate";
 import { usePathname } from "next/navigation";
 
 type BannerSectionProps ={
