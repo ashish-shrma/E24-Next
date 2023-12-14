@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BannerSection from '../BannerSection/BannerSection';
-import {getTimeElapsed} from "../../helpers/queries/getFormattedDate";
+import {getTimeElapsed} from "../../helpers/getFormattedDate";
 
 type ListViewProps ={
 
