@@ -27,14 +27,28 @@ type InitialData = {
 type CenterCardsProps = {
   data: InitialData;
   query: string;
+  slug?: string;
   // fetchData: (query: DocumentNode, page: number) => Promise<any>;
 };
 
-const CenterCards = ({ data, query }: CenterCardsProps) => {
+const CenterCards = ({ data, query , slug}: CenterCardsProps) => {
   const [posts, setPosts] = useState(data.posts.edges);
   const [cursor, setCursor] = useState(data.posts.pageInfo.endCursor);
+  const [loading, setLoading] = useState(false);
+  
+
   const loadMore = async () => {
-    console.log("Fetching more posts", cursor);
+    
+    setLoading(true);
+
+    const variables = slug? {
+      slug: slug,
+      userId: slug,
+      cursor: cursor,
+    } : {
+      cursor: cursor,
+    }
+    
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`,
       {
@@ -44,16 +58,14 @@ const CenterCards = ({ data, query }: CenterCardsProps) => {
         },
         body: JSON.stringify({
           query: query,
-          variables: {
-            cursor: cursor,
-          },
+          variables:variables ,
         }),
       }
     );
     const newData = await response.json();
-    console.log(newData.data.posts.edges[0].node.title);
     setPosts([...posts, ...newData.data.posts.edges]);
     setCursor(newData.data.posts.pageInfo.endCursor);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -71,6 +83,7 @@ const CenterCards = ({ data, query }: CenterCardsProps) => {
   }, [posts, cursor]);
 
   return (
+    <>
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
       <div>
         {posts &&
@@ -98,8 +111,12 @@ const CenterCards = ({ data, query }: CenterCardsProps) => {
               />
             );
           })}
+          {loading && <div className="loader" ></div> }
       </div>
     </div>
+    
+    
+    </>
   );
 };
 
