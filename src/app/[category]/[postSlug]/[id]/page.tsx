@@ -9,7 +9,7 @@ import Link from "next/link";
 import parse, { domToReact } from "html-react-parser";
 import ShareIcon from "@/components/SocialShare/ShareIcon";
 import { format } from "date-fns";
-import Schema from "@/components/Seo/Schema";
+import {ArticleSchema} from "@/components/Seo/Schema";
 
 const Article = async ({ params }: { params: { id: string } }) => {
   const data = await fetchData(getPost, params.id);
@@ -43,7 +43,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
   return (
 
     <>
-    <Schema data={{
+    <ArticleSchema data={{
         name: author,
         uri: uri,
         headline: title,
