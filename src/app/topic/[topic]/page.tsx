@@ -1,5 +1,3 @@
-import BannerSection from '@/components/BannerSection/BannerSection';
-import ListView from '@/components/Cards/Card';
 import CenterCards from '@/components/CenterCards/CenterCards';
 import { fetchData } from '@/helpers/graphql';
 import { getLoadMoreTagPosts, getTagPosts } from '@/queries/getPagePosts';

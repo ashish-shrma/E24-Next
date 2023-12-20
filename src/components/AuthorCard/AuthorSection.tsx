@@ -18,10 +18,7 @@ type AuthorData = {
 }
 
 const AuthorSection: React.FC<{ authorData: AuthorData }> = ({ authorData }) => {
-  const { firstName, lastName, description, avatar, seo } = authorData;
-
-  console.log("authorDatandsvs", authorData.seo);
-  
+  const { firstName, lastName, description, avatar, seo } = authorData;  
 
   return (
     <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md">

@@ -6,8 +6,6 @@ import { Graph } from 'schema-dts';
 const BreadCrumb = () => {
 
    const pathName  = usePathname() ;
-
-   console.log("nabsvhgasvdgheh",pathName);
    
 
 

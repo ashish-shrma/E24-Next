@@ -76,7 +76,6 @@ const CenterCards = ({ data, query , slug}: CenterCardsProps) => {
       )
         return;
       loadMore();
-      console.log("Fetch more list items!");
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
