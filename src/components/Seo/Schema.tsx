@@ -1,7 +1,6 @@
 import React from 'react';
 import { Graph } from 'schema-dts';
 import { sanitize } from 'isomorphic-dompurify';
-import { usePathname } from 'next/navigation';
 import BreadCrumb from './BreadCrumb';
 
 
@@ -32,6 +31,7 @@ type SchemaProps = {
     uri: string;
     headline: string;
     description: string;
+    articleBody: string;
     datePublished: string;
     dateModified: string;
     author: AuthorData;
@@ -59,6 +59,7 @@ export const ArticleSchema: React.FC<SchemaProps> = ({ data }) => {
         '@type': 'NewsArticle',
         'headline': data.headline,
         'description': sanitize(data.description),
+        'articleBody': sanitize(data.articleBody),
         'articleSection': categoryNames,
         'url': data.uri || window.location.href,
         'inLanguage': 'hi',
@@ -102,8 +103,6 @@ export const ArticleSchema: React.FC<SchemaProps> = ({ data }) => {
       },
     ],
   };
-
-  // console.log("mhdvsgsdadashadadajds", data) ;
   
 
   return (
@@ -194,7 +193,7 @@ interface NavigationItem {
 
 const generateNavSchema = (items: any[], parentPath = ''): NavigationItem[] => {
   return items.flatMap((item) => {
-    const { path, id, label, order, uri, childItems } = item.node;
+    const { path, label, childItems } = item.node;
     const hasChildItems = childItems && childItems.edges.length > 0;
 
     const schema: NavigationItem = {

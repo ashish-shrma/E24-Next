@@ -19,7 +19,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { menus } = await fetchData(MENU_QUERY);
-  console.log("ewnbfkj",children?.props.childProp.segment)
   return (
     <html lang="en">
       <body className={inter.className}>
