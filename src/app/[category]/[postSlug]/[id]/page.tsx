@@ -1,23 +1,20 @@
-import BannerSection from "@/components/BannerSection/BannerSection";
-import ListView from "@/components/Cards/Card";
+
 import { fetchData } from "@/helpers/graphql";
-import { gql } from "@apollo/client";
-import React from "react";
 import { getPost } from "@/queries/getPost";
 import Image from "next/image";
 import Link from "next/link";
-import parse, { domToReact } from "html-react-parser";
+import parse from 'html-react-parser';
 import ShareIcon from "@/components/SocialShare/ShareIcon";
 import { format } from "date-fns";
-import Schema from "@/components/Seo/Schema";
+import {ArticleSchema} from "@/components/Seo/Schema";
+import {extractTextFromHTML} from "@/helpers/textManupulation";
+
 
 const Article = async ({ params }: { params: { id: string } }) => {
   const data = await fetchData(getPost, params.id);
   const {
     title,
-    slug,
     uri,
-    databaseId,
     date,
     content,
     featuredImage,
@@ -26,28 +23,22 @@ const Article = async ({ params }: { params: { id: string } }) => {
     author,
     excerpt,
     tags,
-    seo,
   } = data.post;
 
   let contentParse = parse(content);
-
 
   const formattedModifiedDate = modified && format(new Date(modified), 'yyyy-MM-dd HH:mm');
 
   const { sourceUrl, caption, description } =  featuredImage.node;
 
-  // console.log('jhfehwfbejwhfjbs',author);
-  
-  
-
   return (
 
     <>
-    <Schema data={{
+    <ArticleSchema data={{
         name: author,
         uri: uri,
         headline: title,
-        description: excerpt,
+        description: extractTextFromHTML(excerpt),
         datePublished: date,
         dateModified: modified,
         author: author,
@@ -56,6 +47,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
         imgCaption: caption,
         imgDescription: description,
         authorUrl : author,
+        articleBody: extractTextFromHTML(content),
       }}/>
 
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">

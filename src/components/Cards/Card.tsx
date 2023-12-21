@@ -29,9 +29,6 @@ type ListViewProps ={
 const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, slug, databaseId, date  }) => {
 
 
-// console.log("jhsadvbjwehqvdjhe",categories.edges);
-
-
   return (
     <>
           
