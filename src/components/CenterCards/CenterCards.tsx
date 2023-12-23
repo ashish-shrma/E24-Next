@@ -83,7 +83,7 @@ const CenterCards = ({ data, query , slug}: CenterCardsProps) => {
 
   return (
     <>
-    <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
+    <div className="w-full md:w-1/2 lg:w-6/12 lg:px-4 lg:mt-4 p-0 bg-white">
       <div>
         {posts &&
           posts.map((post: PostEdge, index: number) => {

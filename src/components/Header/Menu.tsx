@@ -8,10 +8,10 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 
 const Menu = ({ menus }: { menus: any }) => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const pathname = usePathname();
@@ -26,9 +26,9 @@ const Menu = ({ menus }: { menus: any }) => {
             </Link>
           </div>
           <div
-            className={`nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 ${
-              isMenuOpen ? "top-[9%]" : "-top-[-100%]"
-            } md:w-auto w-full flex items-center px-5`}
+            className={`z-20 bg-fuchsia-800 nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 ${
+              isMenuOpen ? "top-[5%] block" : "-top-[-100%] hidden"
+            } md:w-auto w-full flex items-center px-5 `}
           >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
               {menus &&
@@ -78,14 +78,15 @@ const Menu = ({ menus }: { menus: any }) => {
             <label
               onClick={toggleMenu}
               // name={isMenuOpen ? "close" : "menu"}
-              className="pointer-cursor lg:hidden block"
+              className="pointer-cursor lg:hidden block pt-2"
             >
               <svg
-                className="fill-current text-gray-900"
+                onClick={toggleMenu}
+                className="fill-current text-light"
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
               >
                 <title>menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>

@@ -57,7 +57,7 @@ const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, sl
           <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
               <Image 
                 layout="fill"
-                className="w-full h-40 md:h-auto object-contain rounded-t-md md:rounded-l-md mt-4"
+                className="w-full h-40 md:h-auto object-contain rounded-t-md md:rounded-l-md lg:mt-4 mt-0"
                 src={featuredImage?.node?.sourceUrl || '/education/logo.png'}
                 alt={featuredImage?.node?.title}
               />
