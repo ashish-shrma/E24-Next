@@ -69,8 +69,10 @@ const Authors = async ({ params }: { params: { authors: string } }) => {
 
   return (
     <>
+     <div className="w-full md:w-1/2 lg:w-6/12 lg:px-4 lg:mt-4 p-0 bg-white">
       <AuthorSection authorData={data.user} />
       <CenterCards data={data} query={getLoadAuthorPosts} slug={params.authors}/>
+      </div>
     </>
   );
 };

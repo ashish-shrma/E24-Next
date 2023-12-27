@@ -32,10 +32,10 @@ const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, sl
   return (
     <>
           
-    <div className="my-4 mx-4 md:mx-0 overflow-hidden border-b-2">
+    <div className="mx-4 pb-3 md:mx-0 overflow-hidden border-b-2">
       <div className="flex justify-between">
         
-        <div className="xl:p-4 p-2 w-full">
+        <div className="xl:pt-4 pr-2 w-full">
           
           <Link href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}>
            

@@ -39,8 +39,8 @@ const WebStoryPage = async () => {
   const data: WebStoriesResponse = await fetchData();
 
   return (
-    <div className="w-full md:w-1/2 lg:w-6/12 p-4 mt-4 bg-white">
-      <div className="main-webstories web-stories mx-1 text-center">
+    <div className="w-full md:w-1/2 lg:w-6/12 lg:p-4 md:p-0 mt-4 bg-white">
+      <div className="main-webstories web-stories lg:mx-1 text-center md:pt-4">
       <ul className="flex flex-wrap items-center">
       {data.map(({ id, author_name, title, image_path, created_at, link }) => (
             <li className="px-1 mb-2 box-border w-1/2" key={id}>
@@ -61,10 +61,10 @@ const WebStoryPage = async () => {
                     data-ll-status="loaded"
                   />
                   <div className="gradient flex flex-wrap items-center justify-between p-3 absolute left-0 bottom-0 bg-gradient-to-b from-transparent via-black to-black border-t border-dashed border-white w-full min-h-[118px] box-border">
-                    <h3 className="text-white text-base font-bold leading-6 font-lato mb-2 w-full min-h-[40px] text-left">
+                    <h3 className="text-white text-base font-bold text-sm lg:text-lg font-lato mb-2 w-full min-h-[40px] text-left">
                       {title}
                     </h3>
-                    <div className="time text-gray-200 text-base font-light leading-4 font-lato text-left flex items-end">
+                    <div className="time text-gray-200 text-base text-xs lg:text-sm font-light leading-4 font-lato text-left flex items-end">
                       {created_at &&
                         format(new Date(created_at), "yyyy-MM-dd HH:mm")}{" "}
                       | {author_name}
