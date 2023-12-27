@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Sitemap: https://e24bollywood.com/sitemap.xml
+Sitemap: https://e24bollywood.com/sitemap-news.xml

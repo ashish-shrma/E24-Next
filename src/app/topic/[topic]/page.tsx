@@ -17,8 +17,11 @@ const Topic = async ({ params }: { params: { topic: string } }) => {
 
 
   return (
-   
-    <CenterCards data={data} query={getLoadMoreTagPosts} slug={params.topic} />
+   <>
+   <div className="w-full md:w-1/2 lg:w-6/12 lg:px-4 lg:mt-4 p-0 bg-white">
+   <CenterCards data={data} query={getLoadMoreTagPosts} slug={params.topic} />
+   </div>
+   </>
   )
 }
 
