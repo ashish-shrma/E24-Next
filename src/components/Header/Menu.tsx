@@ -19,7 +19,7 @@ const Menu = ({ menus }: { menus: any }) => {
   return (
     <>
       <header className="bg-fuchsia-800">
-        <nav className="flex justify-between items-center w-[92%] mx-auto">
+        <nav className="flex justify-between items-center w-[92%] mx-auto py-2 lg:py-1">
           <div>
             <Link href="/">
               <Img className="w-16 cursor-pointer" src={Logo} alt="..." />
@@ -27,7 +27,7 @@ const Menu = ({ menus }: { menus: any }) => {
           </div>
           <div
             className={`z-20 bg-fuchsia-800 nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 ${
-              isMenuOpen ? "top-[5%] block" : "-top-[-100%] hidden"
+              isMenuOpen ? "top-[7%] block" : "-top-[-100%] hidden"
             } md:w-auto w-full flex items-center px-5 `}
           >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">

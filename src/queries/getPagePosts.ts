@@ -27,9 +27,67 @@ const postFieldsFragment = gql`
   }
 `;
 
+export const homePageNews = gql`
+  ${postFieldsFragment}
+  query HomePageNews {
+    top0news: posts(where: {categoryName: "top-news"}, first: 10) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    entertainment: posts(where: {categoryName: "entertainment"}, first: 5) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    lifestyle: posts(where: {categoryName: "lifestyle"}, first: 5) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    fashion: posts(where: {categoryName: "fashion"}, first: 5) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    health0fitness: posts(where: {categoryName: "health-fitness"}, first: 5) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    tech0auto: posts(where: {categoryName: "tech-auto"}, first: 5) {
+      edges {
+        node {
+          ...PostFields
+        }
+      }
+    }
+    latest: posts(first: 10) {
+      edges {
+        node {
+          ...PostFields
+        }
+        cursor
+      }
+    }
+  }
+`;
+
+
+
 export const getPostsQuery = gql`
   query GetPosts {
-    posts {
+    posts (where: {categoryName: "tollywood"}, first: 10){
       pageInfo {
         endCursor
         hasNextPage

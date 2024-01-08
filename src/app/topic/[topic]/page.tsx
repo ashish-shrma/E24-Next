@@ -12,7 +12,7 @@ const Topic = async ({ params }: { params: { topic: string } }) => {
   // Call the async function
  const data= await fetchData(getTagPosts,params.topic);
 
-//  console.log(data.tags);
+ console.log("fjehbfhjehwf",params.topic);
  
 
 

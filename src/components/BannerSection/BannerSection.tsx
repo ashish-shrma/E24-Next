@@ -23,6 +23,7 @@ type BannerSectionProps = {
   slug: string;
   databaseId: number;
   date: string;
+  categoryName?: string;
 };
 
 const BannerSection: React.FC<BannerSectionProps> = ({
@@ -32,26 +33,22 @@ const BannerSection: React.FC<BannerSectionProps> = ({
   slug,
   databaseId,
   date,
+  categoryName,
 }) => {
-    console.log("jhsdvfaesvfhjewfhjafhj",title)
+    
   const pathname = usePathname();
   const label = categories.edges.find(
     ({ node }) => node.slug === pathname.split("/").pop()
+
   );
+  const cName= categories.edges.find(
+    ({ node }) => node.slug === categoryName
+
+  );
+  // console.log("jhsdvfaesvfhjewfhjafhj",pathname)
 
   return (
     <>
-    <div className="cat-main-div relative flex justify-center">
-
-      <h2 className="text-3xl font-bold bg-white text-gray-800 z-10 text-center inline-block px-2 py-2">
-        {label?.node.name}
-      </h2>
-      <span
-          className="absolute left-0 h-1 w-full border-t border-b border-blue-700 top-1/2 transform -translate-y-1/2 z-0"
-          style={{ borderColor: "#032a63" }}
-        ></span>
-        </div>
-
       <div className="mx-4 md:mt-2 md:mx-0 overflow-hidden border-b-2">
         <div className="">
           <div className="md:flex-shrink-0 relative xl:h-72">
