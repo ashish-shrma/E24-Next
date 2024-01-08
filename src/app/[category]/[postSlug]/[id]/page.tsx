@@ -51,7 +51,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
       }}/>
 
     <div className="w-full md:w-1/2 lg:w-6/12 p-4 bg-white">
-      <div className="mx-4 md:mx-0 md:w-full mt-4 md:mt-4 w-auto overflow-hidden">
+      <div className="mx-1 lg:mx-0 md:w-full mt-4 md:mt-4 w-auto overflow-hidden">
         <div className="flex mb-2 w-full overflow-x-scroll whitespace-nowrap">
           <span className="px-2">
             <a

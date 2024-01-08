@@ -41,7 +41,7 @@ const WebStoryPage = async () => {
   return (
     <div className="w-full md:w-1/2 lg:w-6/12 lg:p-4 md:p-0 mt-4 bg-white">
       <div className="main-webstories web-stories lg:mx-1 text-center md:pt-4">
-      <ul className="flex flex-wrap items-center">
+      <ul className="flex flex-wrap items-center py-2">
       {data.map(({ id, author_name, title, image_path, created_at, link }) => (
             <li className="px-1 mb-2 box-border w-1/2" key={id}>
               <div className="webstories-item">
