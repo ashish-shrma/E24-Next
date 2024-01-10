@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../assets/Logo.webp";
+import WebstoryCards, { WebstoryCardsItems } from "@/components/WebstoryCard/WebstoryCard";
 
 type WebStory = {
   id: number;
@@ -18,7 +19,7 @@ type WebStory = {
   author_name: string;
 };
 
-type WebStoriesResponse = WebStory[];
+export type WebStoriesResponse = WebStory[];
 
 const WebStoryPage = async () => {
   const fetchData = async () => {
@@ -39,47 +40,12 @@ const WebStoryPage = async () => {
   const data: WebStoriesResponse = await fetchData();
 
   return (
-    <div className="w-full md:w-1/2 lg:w-6/12 lg:p-4 md:p-0 mt-4 bg-white">
+    <div className="w-full md:w-1/2 lg:w-6/12 lg:py-1 md:p-0 mt-4 bg-white">
       <div className="main-webstories web-stories lg:mx-1 text-center md:pt-4">
       <ul className="flex flex-wrap items-center py-2">
-      {data.map(({ id, author_name, title, image_path, created_at, link }) => (
-            <li className="px-1 mb-2 box-border w-1/2" key={id}>
-              <div className="webstories-item">
-                <Link
-                  href={link}
-                  className="block text-white rounded overflow-hidden relative"
-                >
-                  <div className="iconofwebstoires absolute left-4 top-3">
-                    <span className="webstories-icon"></span>
-                  </div>
-                  <Image
-                    src={image_path}
-                    alt={title}
-                    width={640}
-                    height={700}
-                    className="lazyloaded w-full block"
-                    data-ll-status="loaded"
-                  />
-                  <div className="gradient flex flex-wrap items-center justify-between p-3 absolute left-0 bottom-0 bg-gradient-to-b from-transparent via-black to-black border-t border-dashed border-white w-full min-h-[118px] box-border">
-                    <h3 className="text-white text-base font-bold text-sm lg:text-lg font-lato mb-2 w-full min-h-[40px] text-left">
-                      {title}
-                    </h3>
-                    <div className="time text-gray-200 text-base text-xs lg:text-sm font-light leading-4 font-lato text-left flex items-end">
-                      {created_at &&
-                        format(new Date(created_at), "yyyy-MM-dd HH:mm")}{" "}
-                      | {author_name}
-                    </div>
-                    <Image
-                      width={40}
-                      height={40}
-                      className="logo-img absolute bottom-4 right-2 max-w-[30px]"
-                      src={Logo}
-                      alt="News24"
-                      title="News24"
-                    />
-                  </div>
-                </Link>
-              </div>
+      {data.map((item) => (
+            <li className="px-1 mb-2 box-border w-1/2" key={item.id}>
+              <WebstoryCardsItems {...item} />
             </li>
       ))}
        </ul>

@@ -52,3 +52,22 @@
     display: block !important;
   }
 }
+iframe{
+  width: 100%;
+  margin: 1rem 0;
+}
+img{
+  width: 100%;
+}
+.webstory-w{
+  width: 40%;
+}
+
+@media screen and (max-width: 768px) {
+  iframe{
+    height: 210px 
+  }
+  .webstory-w{
+    width: 50%;
+  }
+}

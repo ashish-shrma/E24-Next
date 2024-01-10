@@ -43,7 +43,7 @@ const MainCards = ({ data, categoryName }: MainCardsProps) => {
           return index === 0 ? (
             <>
               <div className="cat-main-div relative flex justify-center">
-                <h2 className="text-3xl font-bold bg-white text-gray-800 z-10 text-center inline-block px-2 py-2">
+                <h2 className="text-3xl mb-1 font-bold bg-white text-gray-800 z-10 text-center inline-block px-2 py-2">
                   {cName?cName?.node.name:"Latest News"}
                 </h2>
                 <span
