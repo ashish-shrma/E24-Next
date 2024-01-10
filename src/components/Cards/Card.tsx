@@ -23,10 +23,10 @@ type ListViewProps ={
     slug: string;
     databaseId: number;
     date: string;
-  
+    showCategory?: any;  
 }
 
-const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, slug, databaseId, date  }) => {
+const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, slug, databaseId, date , showCategory, }) => {
 
 
   return (
@@ -46,10 +46,11 @@ const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, sl
           </Link>
 
           <div className="tracking-wide xl:text-sm text-xs font-semibold py-2 flex" style={{ color: "#18479e" }}>
-            <Link href={`/category/${categories?.edges[0]?.node.slug}`}>
-                 <span>{categories?.edges[0]?.node.name}</span> 
-            </Link>
-            <span className='mx-3'>|</span>
+          {showCategory && (
+                <><Link href={`/category/${categories?.edges[0]?.node.slug}`}>
+                  <span>{categories?.edges[0]?.node.name}</span>
+                </Link><span className='mx-3'>|</span></>
+              )}
             <span>{getTimeElapsed(date)}</span>
           </div>
         </div>

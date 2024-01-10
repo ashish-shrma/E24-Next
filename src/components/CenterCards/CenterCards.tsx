@@ -29,6 +29,7 @@ type CenterCardsProps = {
   data: InitialData;
   query: string;
   slug?: string;
+  showCategory?: any;
   // fetchData: (query: DocumentNode, page: number) => Promise<any>;
 };
 
@@ -101,7 +102,7 @@ const CenterCards = ({ data, query , slug }: CenterCardsProps) => {
             return index === 0 ? (
               <><div className="cat-main-div relative flex justify-center">
 
-              <h2 className="text-3xl capitalize font-bold bg-white text-gray-800 z-10 text-center inline-block px-2 py-2">
+              <h2 className="text-3xl mb-1 capitalize font-bold bg-white text-gray-800 z-10 text-center inline-block px-2 py-2">
                 {label? label?.node.name:pathname.split("/").pop()?.replace("-"," ") }
               </h2>
               <span
@@ -114,7 +115,9 @@ const CenterCards = ({ data, query , slug }: CenterCardsProps) => {
                   databaseId={databaseId}
                   date={date}
                   featuredImage={featuredImage}
-                  categories={categories} /></>
+                  categories={categories}
+                  showCategory={categories}
+                   /></>
             ) : (
               <ListView
                 title={title}
@@ -123,6 +126,7 @@ const CenterCards = ({ data, query , slug }: CenterCardsProps) => {
                 date={date}
                 featuredImage={featuredImage}
                 categories={categories}
+                showCategory={categories}
               />
             );
           })}

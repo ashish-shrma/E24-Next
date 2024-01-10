@@ -24,6 +24,7 @@ type BannerSectionProps = {
   databaseId: number;
   date: string;
   categoryName?: string;
+  showCategory?: string;
 };
 
 const BannerSection: React.FC<BannerSectionProps> = ({
@@ -34,6 +35,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
   databaseId,
   date,
   categoryName,
+  showCategory,
 }) => {
     
   const pathname = usePathname();
@@ -53,7 +55,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
         <div className="">
           <div className="md:flex-shrink-0 relative xl:h-72">
             <Link
-              href={`${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}
+              href={`/${categories.edges[0]?.node.slug}/${slug}/${databaseId}`}
             >
               <Image
                 layout="responsive"
@@ -71,15 +73,16 @@ const BannerSection: React.FC<BannerSectionProps> = ({
           </div>
           <div className="pt-4 md:w-full">
             <div className="flex justify-between lg:mt-6">
-              <Link href={`/category/${categories?.edges[0]?.node.slug}`}>
-                <div
-                  className="py-2 tracking-wide text-sm mt-1 font-semibold "
-                  style={{ color: "#18479e" }}
-                >
-                  {" "}
-                  {categories.edges[0]?.node.name}
-                </div>
-              </Link>
+            {showCategory && (
+                <Link href={`/category/${categories?.edges[0]?.node.slug}`}>
+                  <div
+                    className="py-2 tracking-wide text-sm mt-1 font-semibold"
+                    style={{ color: "#18479e" }}
+                  >
+                    {categories.edges[0]?.node.name}
+                  </div>
+                </Link>
+              )}
               <span className="mt-1" style={{ color: "#44c542" }}> {getTimeElapsed(date)} </span>
             </div>
             <Link
