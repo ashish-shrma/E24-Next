@@ -118,10 +118,9 @@ const WebstoryCards = ({ data }: { data: WebStoriesResponse }) => {
             ref={sliderRef}
           >
             {data.map(({ id, title, image_path, created_at, link }) => (
-              <div className="h-full px-1 flex-shrink-0 gallery-item webstory-w">
+              <div className="h-full px-1 flex-shrink-0 gallery-item webstory-w" key={id}>
                 <li className="mb-2">
                   <WebstoryCardsItems
-                    key={title}
                     id={id}
                     image_path={image_path}
                     title={title}
