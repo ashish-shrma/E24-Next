@@ -5,6 +5,8 @@ import { fetchData } from "@/helpers/graphql";
 import { MENU_QUERY } from "@/components/Header/MenuQuery";
 import Menu from "@/components/Header/Menu";
 import Schema from "@/components/Seo/Schema";
+import Footer from "@/components/Footer/Footer";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +23,28 @@ export default async function RootLayout({
   const { menus } = await fetchData(MENU_QUERY);
   return (
     <html lang="en">
+      <head>
+      <Script
+          id="Absence-banner"
+          async
+          strategy="lazyOnload"
+          src={`https://securepubads.g.doubleclick.net/tag/js/gpt.js`}
+          crossOrigin="anonymous"
+        />
+        <Script
+          id="gpt-ad-script"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.googletag = window.googletag || {cmd: []};
+              googletag.cmd.push(function() {
+                googletag.defineSlot('/182113732/E24_HP_Desktop_ATF_300X250', [[300, 600], [300, 250]], 'div-gpt-ad-1704700533104-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+              });
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <Menu menus={menus} />
         <Schema menus={menus} />
@@ -62,9 +86,21 @@ export default async function RootLayout({
 
             {children}
 
-            <div className="w-full md:w-1/2 lg:w-3/12 p-4">right sidebar</div>
+            <div className="w-full md:w-1/2 lg:w-3/12 p-4">
+              <p>विज्ञापन</p>
+            <div id='div-gpt-ad-1704700533104-0' style={{ minWidth: '300px', minHeight: '250px' }}>
+                <Script
+                  dangerouslySetInnerHTML={{
+                    __html: `
+                      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1704700533104-0'); });
+                    `,
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
+        <Footer />
       </body>
     </html>
   );
