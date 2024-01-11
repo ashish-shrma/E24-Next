@@ -21,6 +21,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { menus } = await fetchData(MENU_QUERY);
+
+  const ad = {
+    code: 'div-gpt-ad-1704700533104-0',
+  };
+
   return (
     <html lang="en">
       <head>
@@ -89,7 +94,7 @@ export default async function RootLayout({
             <div className="w-full md:w-1/2 lg:w-3/12 p-4">
               <p>विज्ञापन</p>
             <div id='div-gpt-ad-1704700533104-0' style={{ minWidth: '300px', minHeight: '250px' }}>
-                <Script
+                <Script  id={`div-gpt-ad-${ad.code}`}
                   dangerouslySetInnerHTML={{
                     __html: `
                       googletag.cmd.push(function() { googletag.display('div-gpt-ad-1704700533104-0'); });
