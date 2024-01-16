@@ -1,10 +1,6 @@
-import BannerSection from '@/components/BannerSection/BannerSection';
-import ListView from '@/components/Cards/Card';
 import CenterCards from '@/components/CenterCards/CenterCards';
 import { fetchData } from '@/helpers/graphql';
 import { getCategoryPosts, getLoadMoreCategoryPageData } from '@/queries/getPagePosts';
-import { gql } from '@apollo/client';
-import React from 'react';
 
 
 const Category = async ({ params }: { params: { category: string } }) => {

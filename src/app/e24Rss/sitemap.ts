@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { fetchData } from '@/helpers/graphql';
-import { getCategoryPosts, getLoadMoreCategoryPageData } from '@/queries/getPagePosts';
+import { getCategoryPosts } from '@/queries/getPagePosts';
 
 export async function generateSitemaps() {
     const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL;

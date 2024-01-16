@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { fetchData } from "@/helpers/graphql";
-import { MENU_QUERY } from "@/components/Header/MenuQuery";
+import { MENU_QUERY } from "@/queries/MenuQuery";
 import Menu from "@/components/Header/Menu";
 import Schema from "@/components/Seo/Schema";
 import Footer from "@/components/Footer/Footer";

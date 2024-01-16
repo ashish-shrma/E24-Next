@@ -1,6 +1,4 @@
-import { gql } from "@apollo/client";
-
-export const MENU_QUERY = gql`
+export const MENU_QUERY = `
   query MenuQuery {
     menus(where: { location: HEADER_API }) {
       edges {
