@@ -3,35 +3,8 @@ import BannerSection from "@/components/BannerSection/BannerSection";
 import ListView from "@/components/Cards/Card";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import {CenterCardsProps, InitialData , PostEdge } from "@/app/type";
 
-type PostEdge = {
-  node: {
-    title: string;
-    slug: string;
-    databaseId: number;
-    date: string;
-    featuredImage: any;
-    categories: any;
-  };
-};
-
-type InitialData = {
-  posts: {
-    edges: PostEdge[];
-    pageInfo: {
-      endCursor: string;
-      hasNextPage: boolean;
-    };
-  };
-};
-
-type CenterCardsProps = {
-  data: InitialData;
-  query: string;
-  slug?: string;
-  showCategory?: any;
-  // fetchData: (query: DocumentNode, page: number) => Promise<any>;
-};
 
 const CenterCards = ({ data, query , slug }: CenterCardsProps) => {
   const [posts, setPosts] = useState(data.posts.edges);

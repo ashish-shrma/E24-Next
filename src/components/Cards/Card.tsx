@@ -2,29 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import BannerSection from '../BannerSection/BannerSection';
 import {getTimeElapsed} from "../../helpers/getFormattedDate";
+import {ListViewProps} from "@/app/type";
 
-type ListViewProps ={
-
-    featuredImage: { 
-      node: {
-        sourceUrl: string;
-        title: string;
-      };
-    };
-    categories: {
-      edges: {
-       node:{
-        slug: string;
-        name: string;
-       }
-      }[];
-    };
-    title: string;
-    slug: string;
-    databaseId: number;
-    date: string;
-    showCategory?: any;  
-}
 
 const ListView: React.FC<ListViewProps> = ({ featuredImage,categories, title, slug, databaseId, date , showCategory, }) => {
 

@@ -2,28 +2,13 @@ import twitter from "../../assets/social/twitter.png";
 import facebook from "../../assets/social/facebook.png";
 import linkedin from "../../assets/social/linkedin.png";
 import Image from "next/image";
+import {AuthorData} from "../../app/type"
 
-type AuthorData = {
-  firstName: string;
-  lastName: string;
-  description: string;
-  avatar?: {
-    url: string;
-  };
-  seo?: {
-    social?: {
-      twitter?: string;
-      facebook?: string;
-      linkedIn?: string;
-    };
-  };
-};
 
 const AuthorSection: React.FC<{ authorData: AuthorData }> = ({
   authorData,
 }) => {
   const { firstName, lastName, description, avatar, seo } = authorData;
-
   return (
     <div className="lg:px-0 px-4 rounded overflow-hidden shadow-l">
       <div className="flex items-center pt-2">
