@@ -3,29 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTimeElapsed } from "../../helpers/getFormattedDate";
 import { usePathname } from "next/navigation";
+import { BannerSectionProps } from "@/app/type";
 
-type BannerSectionProps = {
-  featuredImage: {
-    node: {
-      sourceUrl: string;
-      title: string;
-    };
-  };
-  categories: {
-    edges: {
-      node: {
-        slug: string;
-        name: string;
-      };
-    }[];
-  };
-  title: string;
-  slug: string;
-  databaseId: number;
-  date: string;
-  categoryName?: string;
-  showCategory?: string;
-};
+
+
 
 const BannerSection: React.FC<BannerSectionProps> = ({
   featuredImage,

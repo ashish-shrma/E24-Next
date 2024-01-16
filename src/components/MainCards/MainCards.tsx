@@ -1,29 +1,7 @@
 import BannerSection from "@/components/BannerSection/BannerSection";
 import ListView from "@/components/Cards/Card";
+import {MainCardsProps, InitialData , PostEdge } from "@/app/type";
 
-type PostEdge = {
-  node: {
-    title: string;
-    slug: string;
-    databaseId: number;
-    date: string;
-    featuredImage: any;
-    categories: any;
-  };
-};
-
-type InitialData = {
-  edges: PostEdge[];
-  pageInfo: {
-    endCursor: string;
-    hasNextPage: boolean;
-  };
-};
-
-type MainCardsProps = {
-  data: InitialData;
-  categoryName: string;
-};
 
 const MainCards = ({ data, categoryName }: MainCardsProps) => {
   const postsEdges = data?.edges || [];

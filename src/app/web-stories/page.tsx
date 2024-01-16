@@ -3,21 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../assets/Logo.webp";
 import WebstoryCards, { WebstoryCardsItems } from "@/components/WebstoryCard/WebstoryCard";
+import {WebStory} from "@/app/type";
 
-type WebStory = {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  description: string;
-  link: string;
-  slug: string;
-  image_path: string;
-  image_caption: string;
-  image_alt: string;
-  author: number;
-  author_name: string;
-};
 
 export type WebStoriesResponse = WebStory[];
 
