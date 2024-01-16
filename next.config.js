@@ -3,6 +3,9 @@ const nextConfig = {
     images: {
         domains: ['e24bollywood.com'],
       },
+      experimental: {
+        nextScriptWorkers: true,
+      },
 }
 
 

@@ -32,7 +32,7 @@ export default async function RootLayout({
       <Script
           id="Absence-banner"
           async
-          strategy="lazyOnload"
+          strategy="worker"
           src={`https://securepubads.g.doubleclick.net/tag/js/gpt.js`}
           crossOrigin="anonymous"
         />
@@ -95,6 +95,7 @@ export default async function RootLayout({
               <p>विज्ञापन</p>
             <div id='div-gpt-ad-1704700533104-0' style={{ minWidth: '300px', minHeight: '250px' }}>
                 <Script  id={`div-gpt-ad-${ad.code}`}
+                strategy="worker"
                   dangerouslySetInnerHTML={{
                     __html: `
                       googletag.cmd.push(function() { googletag.display('div-gpt-ad-1704700533104-0'); });

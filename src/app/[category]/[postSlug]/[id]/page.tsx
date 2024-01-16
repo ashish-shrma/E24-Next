@@ -8,6 +8,7 @@ import ShareIcon from "@/components/SocialShare/ShareIcon";
 import { format } from "date-fns";
 import {ArticleSchema} from "@/components/Seo/Schema";
 import {extractTextFromHTML} from "@/helpers/textManupulation";
+import { Partytown } from '@builder.io/partytown/react';
 
 
 const Article = async ({ params }: { params: { id: string } }) => {
@@ -25,15 +26,17 @@ const Article = async ({ params }: { params: { id: string } }) => {
     tags,
   } = data.post;
 
-  let contentParse = parse(content);
+  let contentParse = parse(content.replace('text/javascript', 'text/partytown'));
+
+
 
   const formattedModifiedDate = modified && format(new Date(modified), 'yyyy-MM-dd HH:mm');
 
   const { sourceUrl, caption, description } =  featuredImage.node;
 
   return (
-
     <>
+    <Partytown debug={true} forward={['dataLayer.push']} />
     <ArticleSchema data={{
         name: author,
         uri: uri,
