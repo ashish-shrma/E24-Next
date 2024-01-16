@@ -9,17 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.5",
-    "@apollo/experimental-nextjs-app-support": "^0.5.2",
     "@builder.io/partytown": "^0.8.2",
+    "@next/bundle-analyzer": "^14.0.4",
     "date-fns": "^2.30.0",
-    "graphql": "^16.8.1",
     "he": "^1.2.0",
     "html-react-parser": "^4.2.9",
     "isomorphic-dompurify": "^1.11.0",
-    "jsdom": "^23.0.1",
     "next": "13.5.4",
-    "next-share": "^0.27.0",
+    "next-share": "^0.27.0",  
     "react": "^18",
     "react-dom": "^18",
     "schema-dts": "^1.1.2"

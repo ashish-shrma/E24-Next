@@ -1,7 +1,6 @@
 import CenterCards from '@/components/CenterCards/CenterCards';
 import { fetchData } from '@/helpers/graphql';
 import { getLoadMoreTagPosts, getTagPosts } from '@/queries/getPagePosts';
-import { gql } from '@apollo/client';
 import React from 'react'
 
 const Topic = async ({ params }: { params: { topic: string } }) => {

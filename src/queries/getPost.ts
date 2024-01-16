@@ -1,6 +1,4 @@
-import { gql } from "@apollo/client";
-
-export const getPost = gql`query GetPost($slug: ID!) {
+export const getPost = `query GetPost($slug: ID!) {
     post: post(id: $slug , idType: DATABASE_ID) {
       title
       slug

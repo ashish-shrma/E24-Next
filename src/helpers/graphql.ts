@@ -1,32 +1,34 @@
-import { DocumentNode } from "graphql";
-import {getClient} from "./apollo/client";
+export const fetchData = async (query: string, slug?: string, cursor: string = '') => {
+  try {
+    const variables = slug ? {
+      slug: slug,
+      userId: slug,
+      after: cursor,
+    } : {
+      after: cursor,
+    };
 
-export const fetchData = async (query: DocumentNode, slug?:string, cursor: string = '') => {
-    try {
-      const variables = slug? {
-        slug: slug,
-        userId: slug,
-        after: cursor,
-      } : {
-        after: cursor,
-      }
-      const params = {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         query: query,
         variables: variables,
-        context: {
-          fetchOptions: {
-            next: { revalidate: 5 },
-          },
-        }
-      }
-   
-      const client = getClient();
-      const { data, errors } = await client.query(params);
+      }),
+    });
 
-      // Handle the data here
-return data
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error('Error fetching data:', error);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
-  };
+
+    const { data, errors } = await response.json();
+
+    // Handle the data here
+    return data;
+  } catch (error) {
+    // Handle the error here
+    console.error(error);
+  }
+};

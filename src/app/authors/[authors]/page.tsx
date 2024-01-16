@@ -4,7 +4,6 @@ import ListView from "@/components/Cards/Card";
 import CenterCards from "@/components/CenterCards/CenterCards";
 import { fetchData } from "@/helpers/graphql";
 import { getAuthorPosts, getLoadAuthorPosts } from "@/queries/getPagePosts";
-import { gql } from "@apollo/client";
 import React from "react";
 
 const Authors = async ({ params }: { params: { authors: string } }) => {
