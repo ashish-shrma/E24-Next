@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.5",
     "@apollo/experimental-nextjs-app-support": "^0.5.2",
+    "@builder.io/partytown": "^0.8.2",
     "date-fns": "^2.30.0",
     "graphql": "^16.8.1",
     "he": "^1.2.0",

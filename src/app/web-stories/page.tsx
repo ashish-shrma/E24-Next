@@ -1,58 +1,44 @@
+import { format } from "date-fns";
+import Image from "next/image";
 import Link from "next/link";
+import Logo from "../../assets/Logo.webp";
+import WebstoryCards, { WebstoryCardsItems } from "@/components/WebstoryCard/WebstoryCard";
+import {WebStory} from "@/app/type";
 
-type WebStory = {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  description: string;
-  link: string;
-  slug: string;
-  image_path: string;
-  image_caption: string;
-  image_alt: string;
-  author: number;
-  author_name: string;
-};
 
-type WebStoriesResponse = WebStory[];
+export type WebStoriesResponse = WebStory[];
 
 const WebStoryPage = async () => {
-
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://e24bollywood.com/wp-json/wp/v2/web-stories/1/10/`);
+      const response = await fetch(
+        `https://e24bollywood.com/wp-json/wp/v2/web-stories/1/10/`
+      );
       if (response.ok) {
         const data = await response.json();
-        return data
+        return data;
       } else {
-        console.error('Failed to fetch web story');
+        console.error("Failed to fetch web story");
       }
     } catch (error) {
-      console.error('Error fetching web story', error);
+      console.error("Error fetching web story", error);
     }
-  }
-const data: WebStoriesResponse = await fetchData();
+  };
+  const data: WebStoriesResponse = await fetchData();
 
   return (
-    <div className="">
-      {data.map(({id ,author_name, title, image_path, created_at, link }) =>
-       (
-        <div className="webstories-item inline-block w-1/2 p-0 sm:p-5 mb-10 box-border" key={id}>
-          <Link href="" className="block text-white no-underline rounded-md shadow-md overflow-hidden relative">
-            <img src={image_path} alt={title} className="lazyloaded" data-ll-status="loaded" />
-            <h3 className="text-white text-14 font-bold mb-10 flex-basis-100 text-left">{title}</h3>
-            <div className="time text-14 font-normal text-white text-left flex items-end">{created_at} | {author_name}</div>
-            <img className="logo-img lazyloaded" src="" alt="News24" title="News24" data-ll-status="loaded" />
-          </Link>
-        </div>
-      )
-      
-      )}
-      
+    <div className="w-full md:w-1/2 lg:w-6/12 lg:py-1 md:p-0 mt-4 bg-white">
+      <div className="main-webstories web-stories lg:mx-1 text-center md:pt-4">
+      <ul className="flex flex-wrap items-center py-2">
+      {data.map((item) => (
+            <li className="px-1 mb-2 box-border w-1/2" key={item.id}>
+              <WebstoryCardsItems {...item} />
+            </li>
+      ))}
+       </ul>
+       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WebStoryPage
-
+export default WebStoryPage;

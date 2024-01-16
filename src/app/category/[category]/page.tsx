@@ -2,8 +2,10 @@ import BannerSection from '@/components/BannerSection/BannerSection';
 import ListView from '@/components/Cards/Card';
 import CenterCards from '@/components/CenterCards/CenterCards';
 import { fetchData } from '@/helpers/graphql';
+import { getCategoryPosts, getLoadMoreCategoryPageData } from '@/queries/getPagePosts';
 import { gql } from '@apollo/client';
-import React from 'react'
+import React from 'react';
+
 
 const Category = async ({ params }: { params: { category: string } }) => {
 
@@ -13,34 +15,7 @@ const Category = async ({ params }: { params: { category: string } }) => {
   //   setMobileMenuOpen(!mobileMenuOpen);
   // }
   // console.log(params.category)
-  const getCategoryPosts = gql`
-  query GetCatergoryPosts ($slug: String) {
-    posts(where: {categoryName: $slug}) {
-      edges {
-        node {
-          slug
-          title
-          databaseId
-          featuredImage {
-            node {
-              sourceUrl
-              title
-            }
-          }
-          categories {
-            edges {
-              node {
-                slug
-                name
-              }
-            }
-          }
-          date
-        }
-      }
-    }
-  }
-`
+ 
   
   // Call the async function
  const data= await fetchData(getCategoryPosts,params.category);
@@ -50,8 +25,9 @@ const Category = async ({ params }: { params: { category: string } }) => {
   return (
 
     <>
-    
-    <CenterCards data={data} />
+     <div className="w-full md:w-1/2 lg:w-6/12 lg:px-4 lg:mt-4 p-0 bg-white">
+    <CenterCards data={data} query={getLoadMoreCategoryPageData}  slug={params.category}/>
+    </div>
     </>
 
   )
