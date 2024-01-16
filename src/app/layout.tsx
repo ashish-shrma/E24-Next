@@ -7,6 +7,8 @@ import Menu from "@/components/Header/Menu";
 import Schema from "@/components/Seo/Schema";
 import Footer from "@/components/Footer/Footer";
 import Script from "next/script";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -107,6 +109,7 @@ export default async function RootLayout({
           </div>
         </div>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
